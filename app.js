@@ -1,34 +1,25 @@
-//O principal objetivo deste desafio é fortalecer suas habilidades em lógica de programação. Aqui você deverá desenvolver a lógica para resolver o problema.
-
-let listaDeAmigos = [];  // Array para armazenar os nomes dos amigos
+let listaDeAmigos = [];
 
 // Função para adicionar um amigo à lista
 function adicionarAmigo() {
-    const nomeAmigo = document.getElementById('amigo').value.trim();  // Pega o valor do input
-
-    // Verifica se o campo de input não está vazio
+    const nomeAmigo = document.getElementById('amigo').value.trim();    
     if (nomeAmigo == "") {
-        alert('Por favor, digite um nome!');
+        alert('Por favor, digite o nome de um amigo!');
         return;
     }
 
     // Adiciona o nome do amigo ao array
     listaDeAmigos.push(nomeAmigo);
-    console.log(`${nomeAmigo} foi adicionado à lista de amigos.`);
-    
-    // Atualiza a lista de amigos na tela
+    console.log(`Legal! ${nomeAmigo} foi adicionado à lista de amigos.`);   
     atualizarListaDeAmigos();
-
-    // Limpa o campo de input
     document.getElementById('amigo').value = "";
 }
 
 // Função para atualizar a lista de amigos na interface
 function atualizarListaDeAmigos() {
     const listaElement = document.getElementById('listaAmigos');
-    listaElement.innerHTML = "";  // Limpa a lista atual
-
-    // Adiciona cada amigo da lista ao HTML
+    listaElement.innerHTML = "";
+   
     listaDeAmigos.forEach(amigo => {
         const li = document.createElement('li');
         li.textContent = amigo;
@@ -36,17 +27,17 @@ function atualizarListaDeAmigos() {
     });
 }
 
-// Função para sortear um amigo secreto aleatoriamente
+// Função para sortear um amigo secreto
 function sortearAmigo() {
     if (listaDeAmigos.length == 0) {
-        alert('A lista está vazia! Adicione amigos antes de sortear.');
+        alert('Ops! A lista está vazia. Adicione amigos antes de sortear.');
         return;
     } else if(listaDeAmigos.length == 1){
-        alert('Adicione pelo menos 2 (dois) amigos antes de sortear.');
+        alert('Hmm, será que você tem só 1 amigo? Adicione pelo menos mais um amigo antes de sortear.');
         return;
     }
 
-    // Sorteia um amigo aleatoriamente
+    // Sorteia um amigo
     const amigoSorteado = listaDeAmigos[Math.floor(Math.random() * listaDeAmigos.length)];
 
     // Exibe o resultado do sorteio
